@@ -7,10 +7,9 @@ const seedUsers = require('../script/users.json')
 
 describe('GET /users', () => {
 
-  before(async (done) => {
+  before(async () => {
     await db.sync({ force: true })
     await db.models.user.bulkCreate(seedUsers)
-    done()
   })
 
   it('should return list of users', async () => {
