@@ -8,6 +8,7 @@ const seedUsers = require('../script/users.json')
 describe('GET /users', () => {
 
   before(async () => {
+    console.log("db", db)
     console.log("start", new Date())
     await db.sync({ force: true })
     console.log("after sync", new Date())
