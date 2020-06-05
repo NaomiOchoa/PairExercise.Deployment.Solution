@@ -10,11 +10,11 @@ describe('GET /users', () => {
   before(async () => {
     console.log("db", db)
     console.log("start", new Date())
-    await db.sync({ force: true })
-    console.log("after sync", new Date())
+    const sync = await db.sync({ force: true })
+    console.log("after sync", new Date() + sync)
 
-    await db.models.user.bulkCreate(seedUsers)
-    console.log("after bulk create", new Date())
+    const users = await db.models.user.bulkCreate(seedUsers)
+    console.log("after bulk create", new Date() + users)
 
   })
 
