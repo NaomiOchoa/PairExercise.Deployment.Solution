@@ -8,8 +8,13 @@ const seedUsers = require('../script/users.json')
 describe('GET /users', () => {
 
   before(async () => {
+    console.log("start", new Date())
     await db.sync({ force: true })
+    console.log("after sync", new Date())
+
     await db.models.user.bulkCreate(seedUsers)
+    console.log("after bulk create", new Date())
+
   })
 
   it('should return list of users', async () => {
